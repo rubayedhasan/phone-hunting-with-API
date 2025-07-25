@@ -20,11 +20,11 @@
   </head>
   <body>
     <!-- header section  -->
-    <header class="bg-[#0d6dfd0d] lg:h-screen min-h-[43.5rem] relative">
+    <header class="bg-[#0d6dfd0d] lg:h-screen lg:min-h-[43.5rem] lg:relative px-8">
       <!-- section::navbar -->
       <nav class="md:w-4/5 mx-auto py-12">
-        <ul class="flex items-center justify-between">
-          <h3 class="text-[#403F3F] text-2xl leading-7 font-bold">
+        <ul class="flex  items-center justify-between">
+          <h3 class="text-[#403F3F] text-lg md:text-2xl leading-7 font-bold">
             <a href="">Hot Gadgets</a>
           </h3>
           <button class="btn btn-primary">Sign up</button>
@@ -34,11 +34,11 @@
       <!-- section:: banner  -->
       <section
         id="banner"
-        class="md:w-4/5 mx-auto flex flex-col items-center mb-14"
+        class="md:w-4/5 mx-auto flex flex-col items-center justify-center mb-14"
       >
         <div id="banner-content" class="text-center">
           <!-- banner title  -->
-          <h1 class="text-[3.5rem] font-bold text-[#100F0F]">
+          <h1 class="text-[2rem] lg:text-[3.5rem] font-bold text-[#100F0F]">
             Apple Iphone 13 Pro Max
           </h1>
 
@@ -54,7 +54,7 @@
           <!-- banner buy button  -->
           <button class="btn btn-primary">Buy Now</button>
         </div>
-        <figure id="banner-image" class="h-full absolute left-1/2 -translate-x-1/2 top-1/2">
+        <figure id="banner-image" class="h-full my-10 lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:top-1/3">
           <img
             src="./asset/images/phone_group_for_banner.png"
             alt="phone_group_for_banner"
@@ -65,10 +65,15 @@
     </header>
 
     <!-- main section  -->
-    <main></main>
+    <main class="md: w-4/5 mx-auto mt-20 md:mt-24 lg:mt-[22.2rem]">
+      <p>main section</p>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nihil tempora ipsa voluptas ipsum molestiae repellendus, similique quod neque quia, accusamus sed possimus aliquid dolore cupiditate. Nihil enim soluta quaerat!</p>
+    </main>
 
     <!-- footer section -->
-    <footer></footer>
+    <footer class="mt-20 lg:mt-[6.5rem] bg-[#0d6dfd0d] px-8 py-10 md:px-14 md:py-16 lg:p-[6.5rem]">
+      footer section
+    </footer>
 
     <!-- script link  -->
     <script src="./js/phone.js"></script>
