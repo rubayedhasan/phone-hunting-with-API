@@ -71,13 +71,39 @@
 
     <!-- main section  -->
     <main class="md: w-4/5 mx-auto mt-20 md:mt-24 lg:mt-[22.2rem]">
-      <p>main section</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, nihil
-        tempora ipsa voluptas ipsum molestiae repellendus, similique quod neque
-        quia, accusamus sed possimus aliquid dolore cupiditate. Nihil enim
-        soluta quaerat!
-      </p>
+      <!-- section:: search box  -->
+      <section class="flex flex-col items-center justify-center gap-8">
+        <h2 class="font-semibold text-[#100F0F] text-[1.82rem] text-center">
+          Search your phone
+        </h2>
+
+        <!-- search container  -->
+        <form action="" class="w-full flex justify-center items-center gap-6">
+          <!-- input:: search box field-->
+          <label class="input">
+            <svg
+              class="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input type="search" required placeholder="Search" />
+          </label>
+
+          <!-- search button  -->
+          <button class="btn btn-primary">Search</button>
+        </form>
+      </section>
     </main>
 
     <!-- footer section -->
@@ -124,7 +150,7 @@
 
       <!-- mega menu footer section  -->
       <div
-        class="footer sm:footer-horizontal grid-cols-2 md:grid-cols-4 justify-between md:w-4/5 mx-auto text-[#403F3F] text-sm lg:text-[1.1rem] font-medium"
+        class="footer sm:footer-horizontal grid-cols-2 md:grid-cols-4 justify-between md:w-4/5 mx-auto text-[#403F3F] text-sm lg:text-[1.1rem] font-medium place-items-center"
       >
         <nav class="lg:space-y-2">
           <h6 class="footer-title">Product</h6>
