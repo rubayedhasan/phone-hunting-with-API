@@ -72,13 +72,18 @@
     <!-- main section  -->
     <main class="md: w-4/5 mx-auto mt-20 md:mt-24 lg:mt-[22.2rem]">
       <!-- section:: search box  -->
-      <section class="flex flex-col items-center justify-center gap-8">
-        <h2 class="font-semibold text-[#100F0F] text-[1.82rem] text-center">
+      <section class="flex flex-col items-center justify-center gap-5 md:gap-8">
+        <h2
+          class="font-semibold text-[#100F0F] text-[1.6rem] md:text-[1.82rem] text-center"
+        >
           Search your phone
         </h2>
 
         <!-- search container  -->
-        <form action="" class="w-full flex justify-center items-center gap-6">
+        <form
+          action=""
+          class="w-full flex flex-col md:flex-row justify-center items-center gap-6"
+        >
           <!-- input:: search box field-->
           <label class="input">
             <svg
@@ -106,7 +111,9 @@
           </label>
 
           <!-- search button  -->
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button type="submit" class="btn btn-primary w-full md:w-auto">
+            Search
+          </button>
         </form>
       </section>
 
