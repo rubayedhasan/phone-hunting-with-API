@@ -150,12 +150,29 @@
             </p>
             <p class="text-[#403F3F] text-[1.4rem] font-bold">$999</p>
             <div class="card-actions">
-              <button class="btn btn-primary">Show Details</button>
+              <button class="btn btn-primary" onclick="my_modal_5.showModal()">
+                Show Details
+              </button>
             </div>
           </div>
         </div>
+
+        <!-- modal dialog box  -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <h3 class="text-lg font-bold">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+
         <!-- card::2nd -->
-        <div class="card p-6 w-full shadow-sm">
+        <!-- <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -178,9 +195,9 @@
               <button class="btn btn-primary">Show Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- card::3rd -->
-        <div class="card p-6 w-full shadow-sm">
+        <!-- <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -203,9 +220,9 @@
               <button class="btn btn-primary">Show Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- card::4th -->
-        <div class="card p-6 w-full shadow-sm">
+        <!-- <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -228,9 +245,9 @@
               <button class="btn btn-primary">Show Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- card::5th -->
-        <div class="card p-6 w-full shadow-sm">
+        <!-- <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -253,9 +270,9 @@
               <button class="btn btn-primary">Show Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- card::6th -->
-        <div class="card p-6 w-full shadow-sm">
+        <!-- <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -278,7 +295,7 @@
               <button class="btn btn-primary">Show Details</button>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <!-- show all button -->
         <div class="md:col-span-2 lg:col-span-3 text-center">
@@ -286,8 +303,8 @@
         </div>
       </section>
 
-      <!-- section:: not found container  -->
-      <section id="not-found-container" class="mt-10 hidden">
+      <!-- section:: alert-not found container  -->
+      <section id="alert-container" class="mt-10 hidden">
         <div role="alert" class="alert alert-warning">
           <svg
             xmlns="http://www.w3.org/2000/svg"
