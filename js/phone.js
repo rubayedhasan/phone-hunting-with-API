@@ -8,6 +8,13 @@ const loader = document.querySelector("#loading-spinner");
 // element:: phone-cards-container
 const phoneCardContainer = document.querySelector("#phone-cards-container");
 
+// element:: show-all-phone-btn
+const buttonShowAll = document.querySelector("#show-all-phone-btn");
+
+/****************************************************************************************************** */
+// preserving fetching data
+let collectionOfPhones = [];
+
 // function: for loading(fetching) all phone from server.
 const loadingAllPhones = async () => {
   // hiding spinner after fetching data
@@ -20,9 +27,16 @@ const loadingAllPhones = async () => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=iphone`
   );
-  const data = await response.json();
-  const actualData = data.data;
-  displayPhone(actualData);
+  const actualData = await response.json();
+  collectionOfPhones = actualData.data;
+
+  // calling function for displaying first 6 phone cards
+  displayPhone(collectionOfPhones.slice(0, 6));
+
+  // activate show all phone card button
+  if (collectionOfPhones.length > 6) {
+    buttonShowAll.classList.remove("hidden");
+  }
 };
 
 // function: for displaying phone as card on website
@@ -70,6 +84,15 @@ const displayPhone = (phones) => {
     // display the card to the phone-cards-container
     phoneCardContainer.appendChild(phoneCard);
   });
+};
+
+// function: for showing all phone data in a card
+const showAllPhonesCard = () => {
+  // calling the function for display all phone cards
+  displayPhone(collectionOfPhones);
+
+  // hiding show all phone card button
+  buttonShowAll.classList.add("hidden");
 };
 
 // event: function for trigger a event when clicking on search button
