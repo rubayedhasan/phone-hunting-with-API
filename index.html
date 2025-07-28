@@ -61,7 +61,7 @@
           </p>
 
           <!-- banner buy button  -->
-          <button class="btn btn-primary">Sign up</button>
+          <button class="btn btn-primary">Buy Now</button>
         </div>
         <figure
           id="banner-image"
@@ -132,7 +132,7 @@
         <!-- card::1st -->
         <div class="card p-6 w-full shadow-sm">
           <figure
-            class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
+            class="px-10 py-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
             <img
               src="./asset/images/phone-image-1.png"
@@ -157,22 +157,8 @@
           </div>
         </div>
 
-        <!-- modal dialog box  -->
-        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <h3 class="text-lg font-bold">Hello!</h3>
-            <p class="py-4">Press ESC key or click the button below to close</p>
-            <div class="modal-action">
-              <form method="dialog">
-                <!-- if there is a button in form, it will close the modal -->
-                <button class="btn">Close</button>
-              </form>
-            </div>
-          </div>
-        </dialog>
-
         <!-- card::2nd -->
-        <!-- <div class="card p-6 w-full shadow-sm">
+        <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -192,12 +178,15 @@
             </p>
             <p class="text-[#403F3F] text-[1.4rem] font-bold">$999</p>
             <div class="card-actions">
-              <button class="btn btn-primary">Show Details</button>
+              <button class="btn btn-primary" onclick="my_modal_5.showModal()">
+                Show Details
+              </button>
             </div>
           </div>
-        </div> -->
+        </div>
+
         <!-- card::3rd -->
-        <!-- <div class="card p-6 w-full shadow-sm">
+        <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -217,12 +206,15 @@
             </p>
             <p class="text-[#403F3F] text-[1.4rem] font-bold">$999</p>
             <div class="card-actions">
-              <button class="btn btn-primary">Show Details</button>
+              <button class="btn btn-primary" onclick="my_modal_5.showModal()">
+                Show Details
+              </button>
             </div>
           </div>
-        </div> -->
+        </div>
+
         <!-- card::4th -->
-        <!-- <div class="card p-6 w-full shadow-sm">
+        <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -242,12 +234,15 @@
             </p>
             <p class="text-[#403F3F] text-[1.4rem] font-bold">$999</p>
             <div class="card-actions">
-              <button class="btn btn-primary">Show Details</button>
+              <button class="btn btn-primary" onclick="my_modal_5.showModal()">
+                Show Details
+              </button>
             </div>
           </div>
-        </div> -->
+        </div>
+
         <!-- card::5th -->
-        <!-- <div class="card p-6 w-full shadow-sm">
+        <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -267,12 +262,15 @@
             </p>
             <p class="text-[#403F3F] text-[1.4rem] font-bold">$999</p>
             <div class="card-actions">
-              <button class="btn btn-primary">Show Details</button>
+              <button class="btn btn-primary" onclick="my_modal_5.showModal()">
+                Show Details
+              </button>
             </div>
           </div>
-        </div> -->
+        </div>
+
         <!-- card::6th -->
-        <!-- <div class="card p-6 w-full shadow-sm">
+        <div class="card p-6 w-full shadow-sm">
           <figure
             class="px-10 pt-10 bg-[#0D6EFD0D] flex items-center justify-center"
           >
@@ -292,15 +290,97 @@
             </p>
             <p class="text-[#403F3F] text-[1.4rem] font-bold">$999</p>
             <div class="card-actions">
-              <button class="btn btn-primary">Show Details</button>
+              <button class="btn btn-primary" onclick="my_modal_5.showModal()">
+                Show Details
+              </button>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <!-- show all button -->
         <div class="md:col-span-2 lg:col-span-3 text-center">
           <button class="btn btn-primary">Show All</button>
         </div>
+      </section>
+
+      <!-- section:: modal-box  -->
+      <section id="phone-details-modal-box">
+        <!-- modal dialog box  -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <figure
+              class="px-10 py-10 bg-[#0D6EFD0D] flex items-center justify-center"
+            >
+              <img src="./asset/images/phone-image-6.png" alt="Iphone" />
+            </figure>
+            <h3 class="text-[1.6rem] font-bold text-[#403F3F] mt-[2.15rem]">
+              Iphone 13 Pro Max
+            </h3>
+
+            <p class="mt-[1.3rem] text-base text-[#706F6F]">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.
+            </p>
+
+            <!-- storage info  -->
+            <p class="text-[1.1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Storage :</strong>
+              128GB/256GB/1TB Storage, No card slot
+            </p>
+
+            <!-- display info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold"
+                >Display Size : </strong
+              >6.7 Inches, 109.8 cm
+            </p>
+
+            <!-- chipset info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Chipset : </strong>
+              Apple A15 Bionic
+            </p>
+
+            <!-- memory info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1rem]">
+              <strong class="text-[#403F3F] font-semibold">Memory : </strong>
+              128GB 6 GB RAM, 256GB RAM, 512GB RAM1 1TB 6GB RAM
+            </p>
+
+            <!-- slug info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Slug : </strong>
+              Applice_Iphone_13_Pro_Max
+            </p>
+
+            <!-- release info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold"
+                >Release data :
+              </strong>
+              Released 2021, September 24
+            </p>
+
+            <!-- brand info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Brand : </strong>
+              Apple
+            </p>
+
+            <!-- gps info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">GPS : </strong>
+              AYes, with A-GPS, GLONASS, GALILEO, BDS, QZSS
+            </p>
+
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn bg-[#DC3545] text-white">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
 
       <!-- section:: alert-not found container  -->
