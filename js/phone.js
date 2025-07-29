@@ -32,9 +32,6 @@ const loadingAllPhones = async (yourSearchPhone) => {
   // hiding spinner after fetching data
   loader.classList.add("hidden");
 
-  // hiding old searching results
-  phoneCardContainer.innerHTML = "";
-
   // fetching data(all phones) from server
   const response = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${
@@ -141,6 +138,9 @@ const searchingPhone = () => {
 
   // display loading spinner before data fetch
   loader.classList.remove("hidden");
+
+  // removing old searching results
+  phoneCardContainer.innerHTML = "";
 
   // for unknown delay time
   setTimeout(() => {
