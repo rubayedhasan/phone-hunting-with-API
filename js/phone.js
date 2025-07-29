@@ -8,11 +8,17 @@ const searchBox = document.querySelector("#input-search-box");
 // element:: loading spinner
 const loader = document.querySelector("#loading-spinner");
 
+// element:phones-container section
+const phonesContainer = document.querySelector("#phones-container");
+
 // element:: phone-cards-container
 const phoneCardContainer = document.querySelector("#phone-cards-container");
 
 // element:: show-all-phone-btn
 const buttonShowAll = document.querySelector("#show-all-phone-btn");
+
+// element:: data not found alert container
+const alertContainer = document.querySelector("#alert-container");
 
 /****************************************************************************************************** */
 // preserving fetching data(all phones)
@@ -33,6 +39,25 @@ const loadingAllPhones = async (yourSearchPhone) => {
     }`
   );
   const actualData = await response.json();
+
+  // validating fetching
+  const fetchingStatus = actualData.status;
+  if (!fetchingStatus) {
+    // hide phones container section(parent of phones cards)
+    phonesContainer.classList.add("hidden");
+
+    // active the alert (data not found)
+    alertContainer.classList.remove("hidden");
+    return;
+  } else {
+    // hide the alert (data not found)
+    alertContainer.classList.add("hidden");
+
+    // active phones container section(parent of phones cards)
+    phonesContainer.classList.remove("hidden");
+  }
+
+  // set the data for preserving
   collectionOfPhones = actualData.data;
 
   // calling function for displaying first 6 phone cards
