@@ -44,7 +44,7 @@ const displayPhone = (phones) => {
   // looping through the data to show
   phones.forEach((phone) => {
     // destructuring the phone object and get the keys
-    const { brand, phone_name, image } = phone;
+    const { brand, phone_name, slug, image } = phone;
 
     // creating a element for placing card
     const phoneCard = document.createElement("div");
@@ -72,7 +72,7 @@ const displayPhone = (phones) => {
               <div class="card-actions">
                 <button
                   class="btn btn-primary"
-                  onclick="my_modal_5.showModal()"
+                  onclick="loadingPhoneDetail('${slug}')"
                 >
                   Show Details
                 </button>
@@ -104,4 +104,104 @@ const searchingPhone = () => {
   setTimeout(() => {
     loadingAllPhones();
   }, 3000);
+};
+
+// function::  for showing phone details
+const loadingPhoneDetail = async (phoneId) => {
+  // fetching the specific phone details data from server
+  const responseTheDetailObj = await fetch(
+    `https://openapi.programming-hero.com/api/phone/${phoneId}`
+  );
+  const detailObj = await responseTheDetailObj.json();
+  const actualDetails = detailObj.data;
+
+  // creating element for containing the modal
+  const phoneDetailsSubContainer = document.createElement("div");
+
+  // inserting the phon details into the modal
+  phoneDetailsSubContainer.innerHTML = `
+  <dialog id="phone_details" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box">
+            <figure
+              class="px-10 py-10 bg-[#0D6EFD0D] flex items-center justify-center"
+            >
+              <img src="${actualDetails?.image}" alt="Iphone" />
+            </figure>
+            <h3 class="text-[1.6rem] font-bold text-[#403F3F] mt-[2.15rem]">
+              ${actualDetails?.name}
+            </h3>
+
+            <p class="mt-[1.3rem] text-base text-[#706F6F]">
+              It is a long established fact that a reader will be distracted by
+              the readable content of a page when looking at its layout.
+            </p>
+
+            <!-- storage info  -->
+            <p class="text-[1.1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Storage :</strong>
+              ${actualDetails?.mainFeatures?.storage}
+            </p>
+
+            <!-- display info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold"
+                >Display Size : </strong
+              >${actualDetails?.mainFeatures?.displaySize}
+            </p>
+
+            <!-- chipset info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Chipset : </strong>
+              ${actualDetails?.mainFeatures?.chipSet}
+            </p>
+
+            <!-- memory info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1rem]">
+              <strong class="text-[#403F3F] font-semibold">Memory : </strong>
+              ${actualDetails?.mainFeatures?.memory}
+            </p>
+
+            <!-- sensors info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Sensors : </strong>
+              ${actualDetails?.mainFeatures?.sensors}
+            </p>
+
+            <!-- release info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold"
+                >Release data :
+              </strong>
+              ${actualDetails?.releaseDate}
+            </p>
+
+            <!-- brand info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">Brand : </strong>
+              ${actualDetails?.brand}
+            </p>
+
+            <!-- gps info  -->
+            <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
+              <strong class="text-[#403F3F] font-semibold">GPS : </strong>
+               ${actualDetails?.others?.GPS}
+            </p>
+
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn bg-[#DC3545] text-white">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
+  `;
+
+  // displaying the modal clicking on show details button
+  document
+    .getElementById("phone-details-modal-box")
+    .appendChild(phoneDetailsSubContainer);
+
+  // function calling for showing modal (from DaisyUI)
+  phone_details.showModal();
 };
