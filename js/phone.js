@@ -20,6 +20,9 @@ const buttonShowAll = document.querySelector("#show-all-phone-btn");
 // element:: data not found alert container
 const alertContainer = document.querySelector("#alert-container");
 
+//element:: phone details container
+const detailsContainer = document.querySelector("#details-container");
+
 /****************************************************************************************************** */
 // preserving fetching data(all phones)
 let collectionOfPhones = [];
@@ -144,27 +147,32 @@ const searchingPhone = () => {
 
 // function::  for showing phone details
 const loadingPhoneDetail = async (slugOfPhone) => {
-  // fetching the specific phone details data from server
-  const responseTheDetailObj = await fetch(
-    `https://openapi.programming-hero.com/api/phone/${slugOfPhone}`
-  );
-  const detailObj = await responseTheDetailObj.json();
-  const actualDetails = detailObj.data;
+  try {
+    // fetching the specific phone details data from server
+    const responseTheDetailObj = await fetch(
+      `https://openapi.programming-hero.com/api/phone/${slugOfPhone}`
+    );
+    const detailObj = await responseTheDetailObj.json();
+    const actualDetails = detailObj.data;
 
-  // creating element for containing the modal
-  const phoneDetailsSubContainer = document.createElement("div");
+    // calling function for showing details modal
+    showDetails(actualDetails);
+  } catch (err) {
+    console.error("Error: fetching details fail", err);
+  }
+};
 
+//function:: showing phone details in modal
+const showDetails = (phoneInfo) => {
   // inserting the phone details into the modal
-  phoneDetailsSubContainer.innerHTML = `
-  <dialog id="phone_details" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <figure
+  detailsContainer.innerHTML = `
+  <figure
               class="px-10 py-10 bg-[#0D6EFD0D] flex items-center justify-center"
             >
-              <img src="${actualDetails?.image}" alt="Iphone" />
+              <img src="${phoneInfo?.image}" alt="Iphone" />
             </figure>
             <h3 class="text-[1.6rem] font-bold text-[#403F3F] mt-[2.15rem]">
-              ${actualDetails?.name}
+              ${phoneInfo?.name}
             </h3>
 
             <p class="mt-[1.3rem] text-base text-[#706F6F]">
@@ -175,32 +183,32 @@ const loadingPhoneDetail = async (slugOfPhone) => {
             <!-- storage info  -->
             <p class="text-[1.1rem] text-[#706F6F] mt-[1.1rem]">
               <strong class="text-[#403F3F] font-semibold">Storage :</strong>
-              ${actualDetails?.mainFeatures?.storage}
+              ${phoneInfo?.mainFeatures?.storage}
             </p>
 
             <!-- display info  -->
             <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
               <strong class="text-[#403F3F] font-semibold"
                 >Display Size : </strong
-              >${actualDetails?.mainFeatures?.displaySize}
+              >${phoneInfo?.mainFeatures?.displaySize}
             </p>
 
             <!-- chipset info  -->
             <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
               <strong class="text-[#403F3F] font-semibold">Chipset : </strong>
-              ${actualDetails?.mainFeatures?.chipSet}
+              ${phoneInfo?.mainFeatures?.chipSet}
             </p>
 
             <!-- memory info  -->
             <p class="text-[1rem] text-[#706F6F] mt-[1rem]">
               <strong class="text-[#403F3F] font-semibold">Memory : </strong>
-              ${actualDetails?.mainFeatures?.memory}
+              ${phoneInfo?.mainFeatures?.memory}
             </p>
 
             <!-- sensors info  -->
             <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
               <strong class="text-[#403F3F] font-semibold">Sensors : </strong>
-              ${actualDetails?.mainFeatures?.sensors}
+              ${phoneInfo?.mainFeatures?.sensors}
             </p>
 
             <!-- release info  -->
@@ -208,36 +216,22 @@ const loadingPhoneDetail = async (slugOfPhone) => {
               <strong class="text-[#403F3F] font-semibold"
                 >Release data :
               </strong>
-              ${actualDetails?.releaseDate}
+              ${phoneInfo?.releaseDate}
             </p>
 
             <!-- brand info  -->
             <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
               <strong class="text-[#403F3F] font-semibold">Brand : </strong>
-              ${actualDetails?.brand}
+              ${phoneInfo?.brand}
             </p>
 
             <!-- gps info  -->
             <p class="text-[1rem] text-[#706F6F] mt-[1.1rem]">
               <strong class="text-[#403F3F] font-semibold">GPS : </strong>
-               ${actualDetails?.others?.GPS}
+              ${phoneInfo?.others?.GPS}
             </p>
-
-            <div class="modal-action">
-              <form method="dialog">
-                <!-- if there is a button in form, it will close the modal -->
-                <button class="btn bg-[#DC3545] text-white">Close</button>
-              </form>
-            </div>
-          </div>
-        </dialog>
   `;
 
-  // displaying the modal clicking on show details button
-  document
-    .getElementById("phone-details-modal-box")
-    .appendChild(phoneDetailsSubContainer);
-
   // function calling for showing modal (from DaisyUI)
-  phone_details.showModal();
+  phone_details_modal.showModal();
 };

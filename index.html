@@ -418,11 +418,27 @@
       </section>
 
       <!-- section:: modal-box (after fetching data)  -->
-      <section id="phone-details-modal-box"></section>
+      <dialog
+        id="phone_details_modal"
+        class="modal modal-bottom sm:modal-middle"
+      >
+        <div class="modal-box">
+          <!-- details container  -->
+          <div id="details-container"></div>
+
+          <!-- modal close button -->
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn bg-[#DC3545] text-white">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
 
       <!-- section:: alert-not found container  -->
       <section id="alert-container" class="mt-10 hidden">
-        <div role="alert" class="alert alert-warning">
+        <div role="alert" class="alert alert-error justify-items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6 shrink-0 stroke-current"
@@ -433,11 +449,11 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
           <span class="lg:text-[1.2rem] font-semibold text-[#403F3F]"
-            >Warning: Searching Data Could Not Found on the Server!</span
+            >Error! Searching Data Could Not Found ON The Server</span
           >
         </div>
       </section>
