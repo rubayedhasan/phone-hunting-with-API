@@ -2,6 +2,9 @@
  * getting HTML elements
  *
  * */
+// element:: search box
+const searchBox = document.querySelector("#input-search-box");
+
 // element:: loading spinner
 const loader = document.querySelector("#loading-spinner");
 
@@ -12,20 +15,22 @@ const phoneCardContainer = document.querySelector("#phone-cards-container");
 const buttonShowAll = document.querySelector("#show-all-phone-btn");
 
 /****************************************************************************************************** */
-// preserving fetching data
+// preserving fetching data(all phones)
 let collectionOfPhones = [];
 
 // function: for loading(fetching) all phone from server.
-const loadingAllPhones = async () => {
+const loadingAllPhones = async (yourSearchPhone) => {
   // hiding spinner after fetching data
   loader.classList.add("hidden");
 
   // hiding old searching results
   phoneCardContainer.innerHTML = "";
 
-  // fetching data from server
+  // fetching data(all phones) from server
   const response = await fetch(
-    `https://openapi.programming-hero.com/api/phones?search=iphone`
+    `https://openapi.programming-hero.com/api/phones?search=${
+      yourSearchPhone ? yourSearchPhone : "iphone"
+    }`
   );
   const actualData = await response.json();
   collectionOfPhones = actualData.data;
@@ -97,20 +102,26 @@ const showAllPhonesCard = () => {
 
 // event: function for trigger a event when clicking on search button
 const searchingPhone = () => {
+  // stop form's default reloading
+  event.preventDefault();
+
+  // get the search Item
+  const searchItem = searchBox.value;
+
   // display loading spinner before data fetch
   loader.classList.remove("hidden");
 
   // for unknown delay time
   setTimeout(() => {
-    loadingAllPhones();
+    loadingAllPhones(searchItem);
   }, 3000);
 };
 
 // function::  for showing phone details
-const loadingPhoneDetail = async (phoneId) => {
+const loadingPhoneDetail = async (slugOfPhone) => {
   // fetching the specific phone details data from server
   const responseTheDetailObj = await fetch(
-    `https://openapi.programming-hero.com/api/phone/${phoneId}`
+    `https://openapi.programming-hero.com/api/phone/${slugOfPhone}`
   );
   const detailObj = await responseTheDetailObj.json();
   const actualDetails = detailObj.data;
@@ -118,7 +129,7 @@ const loadingPhoneDetail = async (phoneId) => {
   // creating element for containing the modal
   const phoneDetailsSubContainer = document.createElement("div");
 
-  // inserting the phon details into the modal
+  // inserting the phone details into the modal
   phoneDetailsSubContainer.innerHTML = `
   <dialog id="phone_details" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box">
