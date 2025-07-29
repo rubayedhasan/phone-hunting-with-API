@@ -136,6 +136,9 @@ const searchingPhone = () => {
   // get the search Item
   const searchItem = searchBox.value;
 
+  // hiding show all phone card button
+  buttonShowAll.classList.add("hidden");
+
   // display loading spinner before data fetch
   loader.classList.remove("hidden");
 
