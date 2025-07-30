@@ -119,18 +119,18 @@ const displayPhone = (phones) => {
     // display the card to the phone-cards-container
     phoneCardContainer.appendChild(phoneCard);
   });
-};
 
-// function: for showing all phone data in a card
-const showMorePhonesCard = () => {
   // load more pagination or lazy loading condition
-  if (targetIndex > collectionOfPhones.length) {
+  if (endIndex > collectionOfPhones.length) {
     // hiding show all phone card button
     buttonShowAll.classList.add("hidden");
 
     return;
   }
+};
 
+// function: for showing all phone data in a card
+const showMorePhonesCard = () => {
   // calling the function for display all phone cards
   displayPhone(collectionOfPhones.slice(targetIndex, endIndex));
 
