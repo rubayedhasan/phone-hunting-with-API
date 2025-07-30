@@ -14,8 +14,8 @@ const phonesContainer = document.querySelector("#phones-container");
 // element:: phone-cards-container
 const phoneCardContainer = document.querySelector("#phone-cards-container");
 
-// element:: show-all-phone-btn
-const buttonShowAll = document.querySelector("#show-all-phone-btn");
+// element:: show-more-phone-btn
+const buttonShowAll = document.querySelector("#show-more-phone-btn");
 
 // element:: data not found alert container
 const alertContainer = document.querySelector("#alert-container");
@@ -26,6 +26,11 @@ const detailsContainer = document.querySelector("#details-container");
 /****************************************************************************************************** */
 // preserving fetching data(all phones)
 let collectionOfPhones = [];
+
+// for load more pagination or lazy loading
+const chunkSize = 6;
+let targetIndex = 6;
+let endIndex = 12;
 
 // function: for loading(fetching) all phone from server.
 const loadingAllPhones = async (yourSearchPhone) => {
@@ -117,12 +122,21 @@ const displayPhone = (phones) => {
 };
 
 // function: for showing all phone data in a card
-const showAllPhonesCard = () => {
-  // calling the function for display all phone cards
-  displayPhone(collectionOfPhones);
+const showMorePhonesCard = () => {
+  // load more pagination or lazy loading condition
+  if (targetIndex > collectionOfPhones.length) {
+    // hiding show all phone card button
+    buttonShowAll.classList.add("hidden");
 
-  // hiding show all phone card button
-  buttonShowAll.classList.add("hidden");
+    return;
+  }
+
+  // calling the function for display all phone cards
+  displayPhone(collectionOfPhones.slice(targetIndex, endIndex));
+
+  // reassign the value for take next step
+  targetIndex = endIndex;
+  endIndex = targetIndex + chunkSize;
 };
 
 // event: function for trigger a event when clicking on search button
@@ -141,6 +155,10 @@ const searchingPhone = () => {
 
   // removing old searching results
   phoneCardContainer.innerHTML = "";
+
+  // again initialized the value for lazy loading
+  targetIndex = 6;
+  endIndex = 12;
 
   // for unknown delay time
   setTimeout(() => {
